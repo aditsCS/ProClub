@@ -7,7 +7,7 @@ public class Level11 implements Level{
 
 	@Override
 	public void load(World world, Player player) {
-		world.add(new Player(), 0, 3);
+		world.add(player, 0, 3);
 		for(int i = 0; i < 6; i++){
 			world.add(new Wall(), 3, i);
 		}
