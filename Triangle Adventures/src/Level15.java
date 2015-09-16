@@ -1,27 +1,21 @@
+public class Level14 implements Level {
 
-public class Level15 implements Level {
-
-	@Override
 	public void load(World world, Player player) {
-		world.add(player, 0, 0);	
-		world.add(new Door(), 7, 5);
 		
 		for (int i=0; i<8; i++) {
-			world.add(new Wall(), 1, i);
+			for (int j=0; j<5; j++) {
+				if (Math.random() < 0.8)
+					world.add(new Key(), i, j);
+				else
+					world.add(new Wall(), i, j);
+			}
 		}
-		world.add(new Key(), 1, (int)(Math.random()*(5-3))+3);
+		world.add(player, 0, 0);
 		
-		world.add(new Wall(), 3, (int)(Math.random()*(5-3)+3));
-		for (int i=0; i<8; i++) {
-			world.add(new Wall(), 4, i);
-		}
-		world.add(new Key(), 4, (int)(Math.random()*(2)));
-
-		for (int i=0; i<8; i++) {
-			world.add(new Wall(), 6, i);
-		}
-		world.add(new Key(), 6, (int)(Math.random()*(5-3))+3);
-		
+		world.add(new Door(), 6, 5);
+		world.add(new Wall(), 6, 4);
+		world.add(new Wall(), 7, 4);
+		world.add(new Enemy(), 7, 5);	
 	}
-
+	
 }
