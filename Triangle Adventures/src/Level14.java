@@ -1,4 +1,4 @@
-public class Level13 implements Level {
+public class Level14 implements Level {
 
 	private static final int RAND = (int) (Math.random() * 6);
 	public static final int PLAYER_X = RAND < 3 ? 0 : 3;

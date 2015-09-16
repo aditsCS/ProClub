@@ -1,5 +1,5 @@
 
-public class Level16 implements Level{
+public class Level11 implements Level{
 	public int[] KEY_1_LOC = new int[]{1 + (int)(Math.random() * ((2 - 1) + 1)), 0 + (int)(Math.random() * ((5 - 0) + 1))};
 	public int[] KEY_2_LOC = new int[]{1 + (int)(Math.random() * ((2 - 1) + 1)), 0 + (int)(Math.random() * ((5 - 0) + 1))};
 	public int[] DOOR_LOC = new int[]{3,2};
