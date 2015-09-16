@@ -17,7 +17,7 @@ public class Main {
 		final Gui gui = new Gui(world);
 
 		// change the level number to change levels
-		final Level level = new Level1();
+		final Level level = new Level10();
 		level.load(world, player);
 
 		frame = showGui(gui);
@@ -28,8 +28,14 @@ public class Main {
 
 	public void commandPlayer (Player player) {
 		// Player commands go here
-		player.move();
-		player.attack();
+		for(int i=0; i<6; i++){
+			for(int j=0; j<7; j++){
+				player.move();
+			}
+			player.turnRight();
+		}
+		
+
 	}
 
 	@SuppressWarnings("serial")
