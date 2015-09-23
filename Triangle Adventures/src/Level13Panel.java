@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Level13Panel extends JPanel{
+public class Level13Panel extends SplashScreen {
 	
 	public Level13Panel() {
 

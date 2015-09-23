@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Level2Panel extends JPanel{
+public class Level2Panel extends SplashScreen{
 	
 	public Level2Panel() {
 
@@ -33,14 +33,4 @@ public class Level2Panel extends JPanel{
     add(p);
 	}
 
-public static void main(String[] args) {
-
-    JFrame frame = new JFrame();
-    frame.getContentPane().add(new Level2Panel());
-    frame.setBackground(Color.WHITE);
-    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    frame.setSize(1000, 150);
-    frame.setVisible(true);
-
-	}
 }
