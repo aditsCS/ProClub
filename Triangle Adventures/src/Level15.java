@@ -1,4 +1,4 @@
-public class Level14 implements Level {
+public class Level15 implements Level {
 
 	public void load(World world, Player player) {
 		

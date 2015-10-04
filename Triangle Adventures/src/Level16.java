@@ -1,5 +1,5 @@
 
-public class Level15 implements Level {
+public class Level16 implements Level {
 
 	@Override
 	public void load(World world, Player player) {

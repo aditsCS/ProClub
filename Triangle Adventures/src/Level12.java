@@ -1,4 +1,4 @@
-public class Level11 implements Level {
+public class Level12 implements Level {
 
 	public static final int N = (int) (Math.random() * 4) + 4;
 	boolean visited[][] = new boolean[8][8];
