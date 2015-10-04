@@ -1,15 +1,7 @@
 
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.image.ImageObserver;
-import javax.swing.ImageIcon;
-
-/*
- * Represents a moving, appearing/disappearing image.
- *
- * by: Shelby
- * on: 5/3/13
- */
+import java.awt.image.ImageObserver;import javax.swing.ImageIcon;
  
 public class MovingImage {
 	

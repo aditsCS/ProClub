@@ -19,5 +19,4 @@ public class Character extends MovingImage{
 		if(direction < 0)
 			direction = 3;
 	}
-	
 }
