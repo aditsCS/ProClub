@@ -17,7 +17,11 @@ public class Main {
 		final Gui gui = new Gui(world);
 
 		// change the level number to change levels
+<<<<<<< HEAD
 		final Level level = new Level13();
+=======
+		final Level level = new Level16();
+>>>>>>> origin/master
 		level.load(world, player);
 
 		frame = showGui(gui);

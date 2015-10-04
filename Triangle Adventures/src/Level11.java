@@ -1,34 +1,20 @@
-public class Level11 implements Level {
 
-	public static final int N = (int) (Math.random() * 4) + 4;
-	boolean visited[][] = new boolean[8][8];
-	int dir = 0;
-	int[] dx = {1, 0, -1, 0};
-	int[] dy = {0, 1, 0, -1};
-
-
+public class Level16 implements Level{
+	public int[] KEY_1_LOC = new int[]{1 + (int)(Math.random() * ((2 - 1) + 1)), 0 + (int)(Math.random() * ((5 - 0) + 1))};
+	public int[] KEY_2_LOC = new int[]{1 + (int)(Math.random() * ((2 - 1) + 1)), 0 + (int)(Math.random() * ((5 - 0) + 1))};
+	public int[] DOOR_LOC = new int[]{3,2};
+	public int[] ENEMY_LOC = new int[]{4 + (int)(Math.random() * ((7 - 4) + 1)), 0 + (int)(Math.random() * ((5 - 0) + 1))};
 
 	@Override
 	public void load(World world, Player player) {
-		int x = 0, y = 0;
-		for(int l = 0; l < N; l++)
-		{
-			for(int steps = 0; steps < N -l; steps++)
-			{
-				x += dx[dir];
-				y += dy[dir];
-				visited[x][y] = true;
-			}
-			dir = (dir + 1) % 4;
-			if(l == N - 1)
-				world.add(new Enemy(), x, y);
+		world.add(new Player(), 0, 3);
+		for(int i = 0; i < 6; i++){
+			world.add(new Wall(), 3, i);
 		}
-		for(int r = 0; r < 8; r++)
-			for(int c = 0; c < 8; c++)
-				if(!visited[r][c])
-					world.add(new Wall(), r, c);
-		world.add(player, 0, 0);
-
+		world.add(new Door(), 3, 2);
+		world.add(new Key(), KEY_1_LOC[0], KEY_1_LOC[1]);
+		world.add(new Key(), KEY_2_LOC[0], KEY_2_LOC[1]);
+		world.add(new Enemy(), ENEMY_LOC[0], ENEMY_LOC[1]);
 	}
 
 }
