@@ -1,4 +1,4 @@
-public class Level12 implements Level {
+public class Level13 implements Level {
 
 	private static final int X_MAX = 6;
 	private static final int Y_MAX = 4;

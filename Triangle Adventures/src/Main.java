@@ -1,6 +1,7 @@
 import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 
 public class Main {
 
@@ -8,19 +9,29 @@ public class Main {
 
 	private JFrame frame;
 	private JPanel cardPanel;
+	private SplashScreen splashPanel;
 
 	public Main () {}
 
-	public void run () {
+	public void run () {		
+		
 		final World world = new World();
 		final Player player = new Player();
 		final Gui gui = new Gui(world);
 
 		// change the level number to change levels
 <<<<<<< HEAD
+<<<<<<< HEAD
 		final Level level = new Level13();
 =======
 		final Level level = new Level16();
+>>>>>>> origin/master
+=======
+		int currentLevel = 5; //eg setting this to 1 would be changing the level to level 1
+		final Level level = Levels.levels[currentLevel - 1];
+		splashPanel = Levels.levelSplashScreens[currentLevel - 1];
+		
+		splashPanel.setMain(this);
 >>>>>>> origin/master
 		level.load(world, player);
 
@@ -45,13 +56,14 @@ public class Main {
 	@SuppressWarnings("serial")
 	public JFrame showGui(final Gui gui) {
 		return new JFrame("Triangle Adventures") {{
-		    cardPanel = new JPanel();
-		    CardLayout cl = new CardLayout();
-		    cardPanel.setLayout(cl);
-
-		    cardPanel.add(gui, "1");
-
-			add(cardPanel);
+			
+			JSplitPane split = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+			split.setTopComponent(splashPanel);
+			split.setBottomComponent(gui);
+			split.setDividerLocation(0.8);
+		    
+			add(split);
+			
 			pack();
 			setResizable(false);
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

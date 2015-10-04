@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 public class Level15 implements Level {
 
 	private static final int RAND = (int) (Math.random() * 6);
@@ -22,6 +23,9 @@ public class Level15 implements Level {
 }
 =======
 public class Level14 implements Level {
+=======
+public class Level15 implements Level {
+>>>>>>> origin/master
 
 	public void load(World world, Player player) {
 		
