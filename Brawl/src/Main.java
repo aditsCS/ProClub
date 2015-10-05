@@ -1,3 +1,5 @@
+import java.awt.Image;
+
 import javax.swing.JFrame;
 
 public class Main extends JFrame {
@@ -14,6 +16,7 @@ public class Main extends JFrame {
 
 	public static void main(String[] args) {
 		Main w = new Main("Game");
+		Character test = new Character("text.png", 10, 10, 50, 100, 0);
 	}
 
 }

@@ -9,6 +9,11 @@ public class Character extends MovingImage{
 		direction = dir;
 	}
 	
+	public Character(String imageFile, int x, int y, int width, int height, int dir){
+		super(imageFile, x, y, width, height);
+		direction = dir;
+	}
+	
 	public void move(int x, int y){
 		moveBy(x, y);
 	}
