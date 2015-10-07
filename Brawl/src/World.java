@@ -21,7 +21,7 @@ public class World {
 		player = new Player(400, 200, 2);
 		enemy = new Enemy(500, 400, 2);
 		
-		// blocks
+		// blocks! The two numbers are x, y
 		blocks = new ArrayList<Block>();
 		blocks.add(new Block(100, 100));
 		blocks.add(new Block(100, 200));
@@ -87,15 +87,15 @@ public class World {
 	public void keyPressed() {
 		/*
 		 * Do the same thing as below for downPressed and 
-		 * rightPressed so that Mario can move properly!
+		 * upPressed so that Mario can move properly!
 		 */
 		if (GamePanel.leftPressed) {
 			// Move left
 			player.moveBy(-10, 0);
 		}
-		if (GamePanel.upPressed) {
-			// Move up
-			player.moveBy(0, -10);
+		if (GamePanel.rightPressed) {
+			// Move right
+			player.moveBy(10, 0);
 		}
 		if (GamePanel.spacePressed) {
 			GamePanel.spacePressed = false;
