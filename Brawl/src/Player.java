@@ -2,7 +2,7 @@ import java.awt.Image;
 
 public class Player extends MovingImage {
 	
-	private int direction; //0 is north, clockwise from there
+	private int direction; 	// 0 = up, 1 = right, 2 = down, 3 = left
 	private int maxHealth, currentHealth;
 		
 	/*
@@ -21,6 +21,14 @@ public class Player extends MovingImage {
 		direction = dir;
 		maxHealth = currentHealth = health;
 	}
+
+	public void changeHealthBy(int health){
+		currentHealth += health;
+	}
+	
+	public double calcHealthPercentage(){
+		return (double)currentHealth/maxHealth;
+	}
 	
 	public void turn(int shift) {
 		direction += shift;
@@ -29,12 +37,5 @@ public class Player extends MovingImage {
 			direction = 3;
 	}
 	
-	public void changeHealthBy(int health){
-		currentHealth += health;
-	}
-	
-	public double calcHealthPercentage(){
-		return (double)currentHealth/maxHealth;
-	}
 	
 }

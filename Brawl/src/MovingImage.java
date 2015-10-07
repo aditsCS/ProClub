@@ -8,6 +8,7 @@ public class MovingImage {
 	private int x, y;
 	private int width, height;
 	private Image image;
+	private boolean canMove;
 		
 	public MovingImage(String imageFilename, int x, int y, int w, int h) {
 		image = (new ImageIcon(imageFilename)).getImage();
@@ -15,6 +16,7 @@ public class MovingImage {
 		this.y = y;
 		width = w;
 		height = h;
+		canMove = false;
 	}
 
 	/*

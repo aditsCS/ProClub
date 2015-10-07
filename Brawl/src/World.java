@@ -5,8 +5,9 @@ public class World {
 	
 	private Player player;
 	private Enemy enemy; 
-	// You can also make an ArrayList of Enemies, like the Blocks below
+	// Try making an ArrayList of Enemies, like below
 	private ArrayList<Block> blocks;
+	private ArrayList<Projectile> fireballs;
 	
 	public World() {
 		setup();
@@ -29,6 +30,11 @@ public class World {
 		blocks.add(new Block(300, 400));
 		blocks.add(new Block(400, 400));
 		// try adding more blocks!
+		
+		// fireballs
+		fireballs = new ArrayList<Projectile>();
+		fireballs.add(new Projectile(0, 0, 1));
+	
 	}
 	
 	/**
@@ -42,6 +48,11 @@ public class World {
 		for (Block b : blocks) {
 			b.draw(g);
 		}
+		
+		// loop through each fireball and draw it		
+		for (Projectile fireball : fireballs) {
+			fireball.draw(g);
+		}
 	}
 
 	/**
@@ -51,9 +62,22 @@ public class World {
 		// Loops through each block
 		for (Block b : blocks) {
 			// example of using isPointInImage for collision detection
-			if (b.isPointInImage(player.getX(), player.getY())) {
+			if (b.isPointInImage(player.getX(), player.getY()) ||
+					player.isPointInImage(b.getX(), b.getY())) {
 				System.out.println("Mario hit a block");
 			}
+		}
+		
+		// Loop through Projectiles
+		for (Projectile fireball : fireballs) {
+			// take a look in the act() method of Projectile
+			fireball.act(); 
+			// example of using isPointInImage for collision detection
+			if (fireball.isPointInImage(player.getX(), player.getY()) ||
+				player.isPointInImage(fireball.getX(), fireball.getY())) {
+				System.out.println("Fireball hit Mario");
+			}
+			
 		}
 	}
 	
@@ -62,8 +86,8 @@ public class World {
 	 */
 	public void keyPressed() {
 		/*
-		 * Do the same thing as below for downPressed, 
-		 * rightPressed, and spacePressed.
+		 * Do the same thing as below for downPressed and 
+		 * rightPressed so that Mario can move properly!
 		 */
 		if (GamePanel.leftPressed) {
 			// Move left
@@ -72,6 +96,10 @@ public class World {
 		if (GamePanel.upPressed) {
 			// Move up
 			player.moveBy(0, -10);
+		}
+		if (GamePanel.spacePressed) {
+			GamePanel.spacePressed = false;
+			// Shoot a fireball!
 		}
 	}
 	
