@@ -19,14 +19,14 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 	public GamePanel() {
 		super();
 		setFocusable(true);
-		setPreferredSize(new Dimension(500, 500));
+		setPreferredSize(new Dimension(800, 600));
 		addKeyListener(this);
+
+		world = new World();
 		
 		// Game loop
 		Timer clock = new Timer(1000 / FPS, this);
 		clock.start();
-		
-		world = new World();
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -38,7 +38,7 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		world.keyPressed();
-		world.update();
+		world.act();
 		repaint();
 	}
 
@@ -48,7 +48,6 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 	 */
 	@Override
 	public void keyPressed(KeyEvent e) {
-		System.out.println("Key pressed");
 		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			leftPressed = true;
 		}

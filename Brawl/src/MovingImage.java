@@ -5,32 +5,24 @@ import java.awt.image.ImageObserver;import javax.swing.ImageIcon;
  
 public class MovingImage {
 	
-	// FIELDS
-	
 	private int x, y;
 	private int width, height;
 	private Image image;
-	private boolean isVisible;
-	
-	// CONSTRUCTORS
-	
-	public MovingImage(String filename, int x, int y, int w, int h) {
-		this((new ImageIcon(filename)).getImage(),x,y,w,h);
-	}
-	public MovingImage(Image img, int x, int y, int w, int h) {
-		image = img;
+		
+	public MovingImage(String imageFilename, int x, int y, int w, int h) {
+		image = (new ImageIcon(imageFilename)).getImage();
 		this.x = x;
 		this.y = y;
 		width = w;
 		height = h;
-		isVisible = true;
 	}
-	
-	
-	// METHODS
-	
-	public void toggleVisibility() {
-		isVisible = !isVisible;
+
+	/*
+	 * Moves image by an amount
+	 */
+	public void moveBy(int x, int y) {
+		this.x += x;
+		this.y += y;
 	}
 	
 	public void moveTo(int x, int y) {
@@ -38,32 +30,28 @@ public class MovingImage {
 		this.y = y;
 	}
 	
-	public void moveBy(int x, int y) {
-		this.x += x;
-		this.y += y;
+	/*
+	 * Draws the image
+	 */
+	public void draw(Graphics2D g) {
+		g.drawImage(image, x, y, width, height, null);
 	}
 	
-	public void applyWindowLimits(int windowWidth, int windowHeight) {
-		x = Math.min(x,windowWidth-this.width);
-		y = Math.min(y,windowHeight-this.height);
-		x = Math.max(0,x);
-		y = Math.max(0,y);
+	/*
+	 * Any actions that will continuous need to be done
+	 */
+	public void act() {
+		
 	}
-	
-	public boolean isPointInImage(int mouseX, int mouseY) {
-		if (mouseX >= x && mouseY >= y && mouseX <= x + width && mouseY <= y + height)
+
+	/*
+	 * Collision detection
+	 * Returns true if the x,y point passed in is inside of this image.
+	 */
+	public boolean isPointInImage(int xCoord, int yCoord) {
+		if (xCoord >= x && yCoord >= y && xCoord <= x + width && yCoord <= y + height)
 			return true;
 		return false;
-	}
-	
-	public void resize(int w, int h) {
-		width = w;
-		height = h;
-	}
-	
-	public void draw(Graphics2D g, ImageObserver io) {
-		if (isVisible)
-			g.drawImage(image,x,y,width,height,io);
 	}
 	
 	public int getX() {
@@ -82,7 +70,4 @@ public class MovingImage {
 		return height;
 	}
 	
-	public boolean isVisible() {
-		return isVisible;
-	}
 }

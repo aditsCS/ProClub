@@ -1,36 +1,40 @@
 import java.awt.Image;
 
-public class Player extends MovingImage{
+public class Player extends MovingImage {
 	
 	private int direction; //0 is north, clockwise from there
 	private int maxHealth, currentHealth;
-	
-	public Player(Image image, int x, int y, int width, int height, int dir){
-		super(image, x, y, width, height);
+		
+	/*
+	 * Basic constructor
+	 */
+	public Player(int x, int y, int dir) {
+		super("mario.png", x, y, 100, 132);
 		direction = dir;
-		maxHealth = currentHealth = 0;
 	}
 	
-	public Player(String imageFile, int x, int y, int width, int height, int dir, int health){
-		super(imageFile, x, y, width, height);
+	/*
+	 * Constructor with health
+	 */
+	public Player(int x, int y, int dir, int health) {
+		super("mario.png", x, y, 100, 132);
 		direction = dir;
 		maxHealth = currentHealth = health;
 	}
 	
-	public void move(int x, int y){
-		moveBy(x, y);
-	}
-	
-	public void turn(int shift){
+	public void turn(int shift) {
 		direction += shift;
 		direction %= 4;
 		if(direction < 0)
 			direction = 3;
 	}
+	
 	public void changeHealthBy(int health){
 		currentHealth += health;
 	}
+	
 	public double calcHealthPercentage(){
 		return (double)currentHealth/maxHealth;
 	}
+	
 }
