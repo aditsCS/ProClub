@@ -1,4 +1,4 @@
-package aditya.networking;
+package networking;
 
 import java.io.Serializable;
 

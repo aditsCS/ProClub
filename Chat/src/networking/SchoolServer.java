@@ -1,6 +1,7 @@
-package aditya.networking;
+package networking;
 
-import aditya.interfaces.*;
+import interfaces.*;
+
 import java.net.*;
 import java.util.*;
 import java.io.*;

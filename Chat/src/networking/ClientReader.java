@@ -1,6 +1,7 @@
-package aditya.networking;
+package networking;
 
-import aditya.interfaces.*;
+import interfaces.*;
+
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;

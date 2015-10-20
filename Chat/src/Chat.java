@@ -1,9 +1,8 @@
-
-import javax.swing.BorderFactory;
-import javax.swing.JFrame;
-import javax.swing.JTabbedPane;
+import java.net.*;
+import javax.swing.*;
 
 public class Chat extends JFrame {
+	private static final long serialVersionUID = 1L;
 
 	private ChatPanel chatPanel;
 	private ServerPanel serverPanel;
@@ -17,7 +16,7 @@ public class Chat extends JFrame {
 	    JTabbedPane tabPane = new JTabbedPane();
 	    tabPane.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 	    
-	    serverPanel = new ServerPanel();
+	    serverPanel = new ServerPanel(this);
 	    serverPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 	    tabPane.add("Server", serverPanel);
 	    
@@ -28,13 +27,20 @@ public class Chat extends JFrame {
 	    add(tabPane);
 	    
 	    pack();
-	    setVisible(true);		
+	    setVisible(true);
 	}
-	
-	public static void main(String[] args) {
+		
+	public ChatPanel getChatPanel () {
+		return chatPanel;
+	}
+		
+	public static void main(String[] args) throws UnknownHostException {
 		Chat chat = new Chat();
-		for(int i=0; i<20; i++)
-			chat.chatPanel.appendMessage("Username", "message");
+        InetAddress thisIp = InetAddress.getLocalHost();
+        String myIP = thisIp.getHostAddress();
+        
+        chat.serverPanel.setIPAddress(myIP);
+        chat.chatPanel.setIPAddress(myIP);
 	}
 	
 }

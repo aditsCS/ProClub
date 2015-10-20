@@ -3,9 +3,10 @@
  * and open the template in the editor.
  */
 
-package aditya.networking;
+package networking;
 
-import aditya.interfaces.*;
+import interfaces.*;
+
 import java.io.*;
 import java.net.*;
 

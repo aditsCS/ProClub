@@ -1,4 +1,4 @@
-package aditya.interfaces;
+package interfaces;
 
 import java.io.Serializable;
 
