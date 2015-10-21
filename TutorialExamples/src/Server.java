@@ -1,6 +1,7 @@
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -10,20 +11,20 @@ public class Server {
 
 	public static void main(String[] args) {
 		int port = 8000;
-		DataInputStream in;
-		DataOutputStream out;
+		BufferedReader in;
+		PrintWriter out;
 		ServerSocket server;
 		Socket socket;
 
 		try {
 			server = new ServerSocket(port);
 			socket = server.accept();
-			in = new DataInputStream(socket.getInputStream());
-			out = new DataOutputStream(socket.getOutputStream());
+			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			out = new PrintWriter(socket.getOutputStream(), true);
 			while (true) {
-				int x = in.readInt();
-				JOptionPane.showMessageDialog(null, "Number recieved from client: " + x);
-				out.writeInt(x*2);
+				String text = in.readLine();
+				JOptionPane.showMessageDialog(null, "Text recieved from client: " + text);
+				out.println("Your message was "+text.length()+" characters long.");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
